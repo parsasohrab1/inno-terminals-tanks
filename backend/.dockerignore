@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+*.sqlite3
+data/*.csv
+models_store/*.joblib
+app/secure/modules/*.py
+!app/secure/modules/__init__.py

@@ -1,0 +1,37 @@
+# --- secrets / proprietary IP (NEVER commit plaintext) ---
+*.key
+.env
+.env.*
+!.env.example
+backend/app/secure/modules/*.py
+!backend/app/secure/modules/__init__.py
+ip_key.txt
+
+# --- python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.sqlite3
+*.db
+**/data/*.csv
+**/data/*.parquet
+!**/data/.gitkeep
+**/models_store/*.joblib
+!**/models_store/.gitkeep
+
+# --- node / frontend ---
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.local
+
+# --- editor / os ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,47 @@
+services:
+  timescaledb:
+    image: timescale/timescaledb:2.17.2-pg16
+    environment:
+      POSTGRES_USER: inno
+      POSTGRES_PASSWORD: inno
+      POSTGRES_DB: inno
+    ports: ["5432:5432"]
+    volumes:
+      - tsdata:/var/lib/postgresql/data
+      - ./backend/migrations/timescale.sql:/docker-entrypoint-initdb.d/10-timescale.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U inno"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+    environment:
+      INNO_DATABASE_URL: postgresql+psycopg://inno:inno@timescaledb:5432/inno
+      INNO_SECRET_KEY: ${INNO_SECRET_KEY:-dev-only-change-me-please-32-bytes-min}
+      INNO_IP_KEY: ${INNO_IP_KEY:-}
+      INNO_CORS_ORIGINS: '["http://localhost:5173","http://localhost:4173"]'
+    ports: ["8000:8000"]
+    command: >
+      sh -c "python -m app.seed && python -m app.ml.train &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  simulator:
+    build: ./simulator
+    depends_on: [backend]
+    environment:
+      API: http://backend:8000
+    command: ["python", "-u", "live_stream.py", "--api", "http://backend:8000",
+              "--interval", "2", "--leak-random", "0.01"]
+
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["5173:80"]
+
+volumes:
+  tsdata:

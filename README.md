@@ -1,4 +1,13 @@
 # inno-terminals-tanks
+
+> 🛠️ **پیاده‌سازی نرم‌افزاری این SRS انجام شده است.** برای معماری، راه‌اندازی و نگاشت
+> نیازمندی‌ها به کد: [`PROJECT.md`](PROJECT.md) · [`docs/SRS-TRACEABILITY.md`](docs/SRS-TRACEABILITY.md) ·
+> ماژول‌های اختصاصی رمزنگاری‌شده (ضمیمه ۵.۳): [`docs/IP-VAULT.md`](docs/IP-VAULT.md)
+>
+> اجرا: `docker compose up --build` — یا راهنمای دستی در `PROJECT.md`.
+
+---
+
 سند ملزومات نرم‌افزار (SRS)
 سیستم مدیریت یکپارچه ایمنی و عملیات مبتنی بر IoT و AI برای پایانه‌ها و مخازن پتروشیمی
 نسخه: 1.0
