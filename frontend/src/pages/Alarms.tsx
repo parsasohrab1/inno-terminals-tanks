@@ -24,8 +24,8 @@ export default function Alarms() {
     <div className="space-y-4">
       {rate.data && (
         <div className={`card p-3 text-sm ${rate.data.within_target ? "" : "border-yellow-500/50"}`}>
-          ISA-18.2: {rate.data.per_operator_hour} هشدار/اپراتور/ساعت (هدف ≤ {rate.data.isa_18_2_target})
-          {rate.data.within_target ? " ✅" : " ⚠️ بار هشدار بالا"}
+          ISA-18.2: {rate.data.per_operator_hour} alarms/operator/hour (target ≤ {rate.data.isa_18_2_target})
+          {rate.data.within_target ? " ✅" : " ⚠️ High alarm load"}
         </div>
       )}
       <div className="card overflow-x-auto">

@@ -14,12 +14,12 @@ def utcnow() -> datetime:
 class Role(str, Enum):
     """SRS 2.3 — user classes."""
 
-    OPERATOR = "operator"          # اپراتور اتاق کنترل
-    SAFETY_ENGINEER = "safety"     # مهندس ایمنی
-    OPS_MANAGER = "opsmanager"     # مدیر عملیات
-    TECHNICIAN = "technician"      # تکنسین نگهداری
-    EXECUTIVE = "executive"        # مدیر ارشد
-    ADMIN = "admin"                # مدیر سیستم
+    OPERATOR = "operator"          # control room operator
+    SAFETY_ENGINEER = "safety"     # safety engineer
+    OPS_MANAGER = "opsmanager"     # operations manager
+    TECHNICIAN = "technician"      # maintenance technician
+    EXECUTIVE = "executive"        # senior manager
+    ADMIN = "admin"                # system administrator
 
 
 class User(SQLModel, table=True):

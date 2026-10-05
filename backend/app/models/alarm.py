@@ -10,10 +10,10 @@ from app.models.user import utcnow
 
 
 class AlarmSeverity(str, Enum):
-    CRITICAL = "critical"   # بحرانی
-    HIGH = "high"           # زیاد
-    MEDIUM = "medium"       # متوسط
-    LOW = "low"             # کم
+    CRITICAL = "critical"   # critical
+    HIGH = "high"           # high
+    MEDIUM = "medium"       # medium
+    LOW = "low"             # low
 
     @property
     def rank(self) -> int:

@@ -20,11 +20,11 @@ export default function Admin() {
     <div className="space-y-4">
       <div className="card p-4">
         <div className="font-semibold mb-2">{t("ip_vault")}</div>
-        {vault.isError && <div className="text-sm text-muted">دسترسی محدود (فقط مدیر ارشد).</div>}
+        {vault.isError && <div className="text-sm text-muted">Restricted access (senior manager only).</div>}
         {vault.data && (
           <>
             <div className="text-sm mb-2">
-              وضعیت: <b className={vault.data.vault_unlocked ? "text-brand" : ""}>
+              Status: <b className={vault.data.vault_unlocked ? "text-brand" : ""}>
                 {vault.data.vault_unlocked ? t("vault_unlocked") : t("vault_locked")}
               </b>
             </div>
@@ -43,7 +43,7 @@ export default function Admin() {
 
       <div className="card p-4">
         <div className="font-semibold mb-2">{t("audit_log")}</div>
-        {audit.isError && <div className="text-sm text-muted">دسترسی محدود.</div>}
+        {audit.isError && <div className="text-sm text-muted">Restricted access.</div>}
         {audit.data && (
           <>
             <div className="text-xs mb-2">

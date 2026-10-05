@@ -31,13 +31,13 @@ export default function Dashboard() {
           <div className="font-semibold mb-2">{t("kpi")} (7d)</div>
           {kpi.data && (
             <ul className="text-sm space-y-1">
-              <li>هشدارها: {kpi.data.safety.alarms_total} (سرکوب‌شده: {kpi.data.safety.alarms_suppressed})</li>
-              <li>میانگین زمان پاسخ: {kpi.data.safety.mean_response_seconds ?? "—"}s</li>
-              <li>ISA-18.2: {kpi.data.safety.isa_18_2.per_operator_hour}/ساعت
+              <li>Alarms: {kpi.data.safety.alarms_total} (suppressed: {kpi.data.safety.alarms_suppressed})</li>
+              <li>Mean response time: {kpi.data.safety.mean_response_seconds ?? "—"}s</li>
+              <li>ISA-18.2: {kpi.data.safety.isa_18_2.per_operator_hour}/hour
                 {kpi.data.safety.isa_18_2.within_target ? " ✅" : " ⚠️"}</li>
-              <li>پیش‌بینی نشت: {kpi.data.leak_prediction.alerts_fired} هشدار /
-                {kpi.data.leak_prediction.confirmed_leaks} تأییدشده</li>
-              <li>عملیات کامل‌شده: {kpi.data.operations.completed}</li>
+              <li>Leak prediction: {kpi.data.leak_prediction.alerts_fired} alerts /
+                {kpi.data.leak_prediction.confirmed_leaks} confirmed</li>
+              <li>Completed operations: {kpi.data.operations.completed}</li>
             </ul>
           )}
         </div>

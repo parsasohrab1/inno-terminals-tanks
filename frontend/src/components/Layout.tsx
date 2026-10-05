@@ -72,7 +72,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           className="btn btn-ghost"
           onClick={() => setLang(i18n.language === "fa" ? "en" : "fa")}
         >
-          {i18n.language === "fa" ? "EN" : "فا"}
+          {i18n.language === "fa" ? "EN" : "FA"}
         </button>
         <button className="btn btn-ghost" onClick={() => { logout(); nvg("/"); }}>
           {t("logout")}

@@ -1,108 +1,108 @@
 # inno-terminals-tanks
 
-> 🛠️ **پیاده‌سازی نرم‌افزاری این SRS انجام شده است.** برای معماری، راه‌اندازی و نگاشت
-> نیازمندی‌ها به کد: [`PROJECT.md`](PROJECT.md) · [`docs/SRS-TRACEABILITY.md`](docs/SRS-TRACEABILITY.md) ·
-> ماژول‌های اختصاصی رمزنگاری‌شده (ضمیمه ۵.۳): [`docs/IP-VAULT.md`](docs/IP-VAULT.md)
+> 🛠️ **The software implementation of this SRS has been completed.** For architecture, setup and mapping
+> of requirements to code: [`PROJECT.md`](PROJECT.md) · [`docs/SRS-TRACEABILITY.md`](docs/SRS-TRACEABILITY.md) ·
+> Dedicated encrypted modules (Appendix 5.3): [`docs/IP-VAULT.md`](docs/IP-VAULT.md)
 >
-> اجرا: `docker compose up --build` — یا راهنمای دستی در `PROJECT.md`.
+> Run: `docker compose up --build` — or the manual guide in `PROJECT.md`.
 
 ---
 
-سند ملزومات نرم‌افزار (SRS)
-سیستم مدیریت یکپارچه ایمنی و عملیات مبتنی بر IoT و AI برای پایانه‌ها و مخازن پتروشیمی
-نسخه: 1.0
-تاریخ: 2025-04-08
-تهیه‌کننده: تیم تحلیل و طراحی سیستم
+Software Requirements Specification (SRS)
+IoT- and AI-Based Integrated Safety and Operations Management System for Petrochemical Terminals and Tanks
+Version: 1.0
+Date: 2025-04-08
+Prepared by: System Analysis and Design Team
 
-فهرست مطالب
-مقدمه
-1.1 هدف
-1.2 دامنه
-1.3 تعاریف، کلمات اختصاری و اصطلاحات
-1.4 مراجع
-1.5 نمای کلی سند
+Table of Contents
+Introduction
+1.1 Purpose
+1.2 Scope
+1.3 Definitions, Acronyms and Terms
+1.4 References
+1.5 Document Overview
 
-توصیف کلی
-2.1 چشم‌انداز محصول
-2.2 عملکرد محصول
-2.3 کلاس‌ها و ویژگی‌های کاربر
-2.4 محیط عملیاتی
-2.5 محدودیت‌های طراحی و پیاده‌سازی
-2.6 فرضیات و وابستگی‌ها
+General Description
+2.1 Product Vision
+2.2 Product Functions
+2.3 User Classes and Characteristics
+2.4 Operating Environment
+2.5 Design and Implementation Constraints
+2.6 Assumptions and Dependencies
 
-نیازمندی‌های خاص
-3.1 نیازمندی‌های عملکردی
-3.1.1 ماژول پایش بلادرنگ مخازن
-3.1.2 ماژول پیش‌بینی نشت
-3.1.3 ماژول بهینه‌سازی عملیات بارگیری/تخلیه
-3.1.4 ماژول مدیریت هشدار و رویداد
-3.1.5 ماژول گزارش‌دهی و تحلیل
-3.1.6 ماژول یکپارچه‌سازی با سیستم‌های موجود
-3.2 نیازمندی‌های غیرعملکردی
-3.2.1 عملکرد
-3.2.2 قابلیت اطمینان
-3.2.3 امنیت
-3.2.4 قابلیت نگهداری
-3.2.5 قابلیت حمل
-3.2.6 مقیاس‌پذیری
-3.2.7 انطباق با استانداردها
+Specific Requirements
+3.1 Functional Requirements
+3.1.1 Real-Time Tank Monitoring Module
+3.1.2 Leak Prediction Module
+3.1.3 Loading/Unloading Operations Optimization Module
+3.1.4 Alert and Event Management Module
+3.1.5 Reporting and Analytics Module
+3.1.6 Integration Module with Existing Systems
+3.2 Non-Functional Requirements
+3.2.1 Performance
+3.2.2 Reliability
+3.2.3 Security
+3.2.4 Maintainability
+3.2.5 Portability
+3.2.6 Scalability
+3.2.7 Standards Compliance
 
-نیازمندی‌های رابط خارجی
-4.1 رابط کاربری
-4.2 رابط سخت‌افزاری
-4.3 رابط نرم‌افزاری
-4.4 رابط ارتباطی
+External Interface Requirements
+4.1 User Interface
+4.2 Hardware Interface
+4.3 Software Interface
+4.4 Communication Interface
 
-ضمائم
-5.1 کد تولید داده سنتتیک
-5.2 بنچمارک‌های بین‌المللی
-5.3 جنبه‌های قابل ثبت اختراع
+Appendices
+5.1 Synthetic Data Generation Code
+5.2 International Benchmarks
+5.3 Patentable Aspects
 
-1. مقدمه
-1.1 هدف
-هدف این سند تعیین نیازمندی‌های کامل برای طراحی، توسعه و استقرار سیستم مدیریت یکپارچه ایمنی و عملیات مبتنی بر IoT و AI برای پایانه‌ها و مخازن پتروشیمی است. این سیستم با استفاده از حسگرهای اینترنت اشیا (IoT) و الگوریتم‌های هوش مصنوعی (AI) امکان پایش بلادرنگ وضعیت مخازن، پیش‌بینی نشت‌های احتمالی و بهینه‌سازی عملیات بارگیری و تخلیه را فراهم می‌آورد.
+1. Introduction
+1.1 Purpose
+The purpose of this document is to specify the complete requirements for the design, development and deployment of an IoT- and AI-based integrated safety and operations management system for petrochemical terminals and tanks. Using Internet of Things (IoT) sensors and artificial intelligence (AI) algorithms, this system enables real-time monitoring of tank status, prediction of potential leaks, and optimization of loading and unloading operations.
 
-1.2 دامنه
-این سیستم برای استفاده در پایانه‌های ذخیره‌سازی و انتقال فرآورده‌های نفتی، پتروشیمی و گاز طراحی شده است. دامنه شامل:
+1.2 Scope
+This system is designed for use in storage and transfer terminals for petroleum, petrochemical and gas products. The scope includes:
 
-پایش پیوسته پارامترهای فیزیکی و شیمیایی مخازن (دما، فشار، سطح، ترکیب گاز، لرزش، خوردگی و ...)
+Continuous monitoring of physical and chemical parameters of tanks (temperature, pressure, level, gas composition, vibration, corrosion, etc.)
 
-تحلیل بلادرنگ داده‌ها برای تشخیص ناهنجاری و پیش‌بینی نشت
+Real-time data analysis for anomaly detection and leak prediction
 
-بهینه‌سازی زمان‌بندی و توالی عملیات بارگیری/تخلیه با در نظر گرفتن ایمنی و بهره‌وری
+Optimizing the scheduling and sequence of loading/unloading operations while considering safety and productivity
 
-ارائه هشدارهای زودهنگام و مدیریت رویدادها
+Providing early warnings and event management
 
-یکپارچگی با سیستم‌های کنترل توزیع‌شده (DCS)، سیستم‌های اطلاعات مدیریت (MIS) و سیستم‌های برنامه‌ریزی منابع سازمانی (ERP)
+Integration with Distributed Control Systems (DCS), Management Information Systems (MIS) and Enterprise Resource Planning (ERP) systems
 
-1.3 تعاریف، کلمات اختصاری و اصطلاحات
-IoT: اینترنت اشیا
+1.3 Definitions, Acronyms and Terms
+IoT: Internet of Things
 
-AI/ML: هوش مصنوعی / یادگیری ماشین
+AI/ML: Artificial Intelligence / Machine Learning
 
-DCS: سیستم کنترل توزیع‌شده
+DCS: Distributed Control System
 
-SCADA: کنترل نظارتی و جمع‌آوری داده
+SCADA: Supervisory Control and Data Acquisition
 
-API: رابط برنامه‌نویسی کاربردی
+API: Application Programming Interface
 
-MES: سیستم اجرای تولید
+MES: Manufacturing Execution System
 
-ERP: برنامه‌ریزی منابع سازمانی
+ERP: Enterprise Resource Planning
 
-ATEX: استاندارد تجهیزات الکتریکی برای محیط‌های قابل انفجار
+ATEX: Standard for electrical equipment in explosive atmospheres
 
-IEC 61511: استاندارد سیستم‌های ابزار دقیق ایمنی
+IEC 61511: Standard for safety instrumented systems
 
-API RP 2350: توصیه‌های عملی برای محافظت از مخازن ذخیره در برابر سرریز
+API RP 2350: Recommended practice for protecting storage tanks against overfill
 
-IEC 62443: استاندارد امنیت سایبری برای سیستم‌های اتوماسیون و کنترل صنعتی
+IEC 62443: Cybersecurity standard for industrial automation and control systems
 
-DT: دوقلوی دیجیتال (Digital Twin)
+DT: Digital Twin
 
-پیش‌بینی نشت: تخمین احتمال وقوع نشت در آینده نزدیک بر اساس تحلیل الگوهای داده
+Leak prediction: Estimating the probability of a leak occurring in the near future based on analysis of data patterns
 
-1.4 مراجع
+1.4 References
 ISO/IEC/IEEE 29148:2018 – Systems and software engineering — Requirements engineering
 
 ISO 15926 – Industrial automation systems and integration
@@ -119,214 +119,214 @@ ISA‑95 – Enterprise‑Control System Integration
 
 NFPA 30 – Flammable and Combustible Liquids Code
 
-1.5 نمای کلی سند
-این سند در بخش‌های زیر سازمان‌دهی شده است: بخش ۲ توصیف کلی سیستم، بخش ۳ نیازمندی‌های عملکردی و غیرعملکردی، بخش ۴ نیازمندی‌های رابط خارجی، و بخش ۵ ضمائم شامل کد تولید داده سنتتیک، بنچمارک‌های بین‌المللی و جنبه‌های ثبت اختراع.
+1.5 Document Overview
+This document is organized into the following sections: Section 2 General system description, Section 3 Functional and non-functional requirements, Section 4 External interface requirements, and Section 5 Appendices including synthetic data generation code, international benchmarks and patentable aspects.
 
-2. توصیف کلی
-2.1 چشم‌انداز محصول
-این محصول به عنوان یک پلتفرم یکپارچه نرم‌افزاری-سخت‌افزاری عمل می‌کند که با استقرار شبکه‌ای از حسگرهای هوشمند در مخازن و خطوط لوله، داده‌ها را به صورت بلادرنگ جمع‌آوری کرده و با استفاده از مدل‌های یادگیری ماشین، تحلیل‌های پیشرفته‌ای برای پیش‌بینی نشت، تشخیص خرابی تجهیزات و بهینه‌سازی عملیات ارائه می‌دهد. سیستم باید قابل استقرار در پایانه‌های بزرگ با صدها مخزن و همچنین مقیاس‌پذیر برای پایانه‌های کوچک باشد.
+2. General Description
+2.1 Product Vision
+This product operates as an integrated software-hardware platform which, by deploying a network of smart sensors on tanks and pipelines, collects data in real time and, using machine learning models, provides advanced analytics for leak prediction, equipment failure detection and operations optimization. The system must be deployable in large terminals with hundreds of tanks and also scalable for small terminals.
 
-2.2 عملکرد محصول
-عملکردهای اصلی محصول عبارتند از:
+2.2 Product Functions
+The main functions of the product are:
 
-پایش بلادرنگ: نمایش وضعیت لحظه‌ای پارامترهای حیاتی هر مخزن (سطح، دما، فشار، چگالی، ترکیب گازهای قابل اشتعال و سمی، لرزش، نرخ خوردگی)
+Real-time monitoring: Displaying the instantaneous status of critical parameters of each tank (level, temperature, pressure, density, composition of flammable and toxic gases, vibration, corrosion rate)
 
-پیش‌بینی نشت: استفاده از مدل‌های ML آموزش‌دیده بر روی داده‌های تاریخی و بلادرنگ برای شناسایی الگوهای منجر به نشت و تولید هشدار پیشگیرانه با دقت بالا
+Leak prediction: Using ML models trained on historical and real-time data to identify patterns leading to a leak and generate a high-accuracy preventive alert
 
-بهینه‌سازی بارگیری/تخلیه: الگوریتم‌های بهینه‌سازی برای زمان‌بندی عملیات بارگیری و تخلیه با هدف کاهش زمان انتظار، جلوگیری از سرریز، و رعایت محدودیت‌های ایمنی و ظرفیت
+Loading/unloading optimization: Optimization algorithms for scheduling loading and unloading operations with the goal of reducing waiting time, preventing overflow, and respecting safety and capacity constraints
 
-مدیریت هشدار: سیستم هوشمند اولویت‌بندی هشدارها، ارسال اعلان به اپراتورها از طریق موبایل/ایمیل/پیامک، و ثبت و پیگیری رویدادها
+Alert management: An intelligent alert prioritization system, sending notifications to operators via mobile/email/SMS, and recording and tracking events
 
-گزارش‌دهی و تحلیل: داشبوردهای مدیریتی، گزارش‌های دوره‌ای، تحلیل روند، و قابلیت جستجو در داده‌های تاریخی
+Reporting and analytics: Management dashboards, periodic reports, trend analysis, and the ability to search historical data
 
-یکپارچگی: اتصال به DCS/SCADA، سیستم‌های نگهداری (CMMS)، و نرم‌افزارهای سازمانی از طریق API و پروتکل‌های استاندارد صنعتی
+Integration: Connection to DCS/SCADA, maintenance systems (CMMS), and enterprise software through APIs and standard industrial protocols
 
-2.3 کلاس‌ها و ویژگی‌های کاربر
-اپراتور اتاق کنترل: مشاهده داشبورد بلادرنگ، دریافت هشدارها، تأیید رویدادها
+2.3 User Classes and Characteristics
+Control room operator: View the real-time dashboard, receive alerts, acknowledge events
 
-مهندس ایمنی: تحلیل گزارش‌های ایمنی، پیکربندی آستانه‌ها، بررسی پیش‌بینی‌های نشت
+Safety engineer: Analyze safety reports, configure thresholds, review leak predictions
 
-مدیر عملیات: مشاهده KPIها، برنامه‌ریزی بهینه بارگیری/تخلیه، تصمیم‌گیری استراتژیک
+Operations manager: View KPIs, optimal loading/unloading planning, strategic decision-making
 
-تکنسین نگهداری: مشاهده وضعیت سلامت تجهیزات، دریافت دستور کار پیشگیرانه
+Maintenance technician: View equipment health status, receive preventive work orders
 
-مدیر ارشد: داشبورد اجرایی، تحلیل هزینه-فایده، گزارش‌های انطباق
+Senior manager: Executive dashboard, cost-benefit analysis, compliance reports
 
-2.4 محیط عملیاتی
-سخت‌افزار: سرورهای مرکزی (on-premise یا ابری)، گیت‌وی‌های IoT صنعتی، حسگرهای بی‌سیم (مطابق ATEX/IECEx برای مناطق خطرناک)، ایستگاه‌های کاری اپراتور
+2.4 Operating Environment
+Hardware: Central servers (on-premise or cloud), industrial IoT gateways, wireless sensors (ATEX/IECEx compliant for hazardous areas), operator workstations
 
-نرم‌افزار: سیستم‌عامل سرور (Linux/Windows Server)، پایگاه داده زمان‌سری (مانند InfluxDB، TimescaleDB)، موتور پردازش جریانی (Apache Kafka، Flink)، محیط اجرای مدل‌های ML (TensorFlow Serving، ONNX Runtime)
+Software: Server operating system (Linux/Windows Server), time-series database (such as InfluxDB, TimescaleDB), stream processing engine (Apache Kafka, Flink), ML model runtime environment (TensorFlow Serving, ONNX Runtime)
 
-شبکه: شبکه صنعتی ایزوله با امنیت بالا، پشتیبانی از پروتکل‌های MQTT، OPC-UA، Modbus TCP
+Network: Isolated, highly secure industrial network, support for MQTT, OPC-UA, Modbus TCP protocols
 
-2.5 محدودیت‌های طراحی و پیاده‌سازی
-تمام تجهیزات سخت‌افزاری نصب‌شده در مناطق خطرناک باید دارای گواهی ATEX/IECEx باشند.
+2.5 Design and Implementation Constraints
+All hardware installed in hazardous areas must have ATEX/IECEx certification.
 
-سیستم باید با حداقل تأخیر (کمتر از ۱ ثانیه برای داده‌های حیاتی) پاسخگو باشد.
+The system must respond with minimal latency (less than 1 second for critical data).
 
-مدل‌های AI باید قابل توضیح (Explainable AI) باشند تا اپراتورها بتوانند دلایل پیش‌بینی‌ها را درک کنند.
+AI models must be explainable (Explainable AI) so operators can understand the reasons for predictions.
 
-سیستم باید قابلیت کار آفلاین موقت در صورت قطع ارتباط با سرور مرکزی را داشته باشد (edge computing).
+The system must have temporary offline operation capability if the connection to the central server is lost (edge computing).
 
-2.6 فرضیات و وابستگی‌ها
-داده‌های تاریخی کافی از مخازن مشابه برای آموزش مدل‌های ML در دسترس است یا از طریق کد تولید داده سنتتیک (بخش ۵.۱) ایجاد می‌شود.
+2.6 Assumptions and Dependencies
+Sufficient historical data from similar tanks is available to train ML models or is created through the synthetic data generation code (Section 5.1).
 
-زیرساخت شبکه صنعتی با پهنای باند کافی برای انتقال داده‌های حسگرها فراهم است.
+Industrial network infrastructure with sufficient bandwidth for transmitting sensor data is provided.
 
-استانداردهای ایمنی و محیط زیستی محلی و بین‌المللی رعایت می‌شوند.
+Local and international safety and environmental standards are observed.
 
-3. نیازمندی‌های خاص
-3.1 نیازمندی‌های عملکردی
-3.1.1 ماژول پایش بلادرنگ مخازن
-FR-1.1: سیستم باید داده‌های حسگرهای نصب‌شده بر روی مخازن (سطح، دما، فشار، چگالی، گاز قابل اشتعال، H2S، لرزش، خوردگی) را با نرخ نمونه‌برداری حداقل ۱ هرتز جمع‌آوری کند.
+3. Specific Requirements
+3.1 Functional Requirements
+3.1.1 Real-Time Tank Monitoring Module
+FR-1.1: The system must collect data from sensors installed on tanks (level, temperature, pressure, density, flammable gas, H2S, vibration, corrosion) at a sampling rate of at least 1 Hz.
 
-FR-1.2: داده‌ها باید از طریق پروتکل‌های MQTT/OPC-UA/Modbus از گیت‌وی‌های IoT دریافت و در پایگاه داده زمان‌سری ذخیره شوند.
+FR-1.2: Data must be received from IoT gateways through MQTT/OPC-UA/Modbus protocols and stored in the time-series database.
 
-FR-1.3: داشبورد بلادرنگ باید وضعیت هر مخزن را با کد رنگی (سبز/زرد/قرمز) بر اساس آستانه‌های پیکربندی‌شده نمایش دهد.
+FR-1.3: The real-time dashboard must display the status of each tank with a color code (green/yellow/red) based on configured thresholds.
 
-FR-1.4: سیستم باید قابلیت بزرگنمایی زمانی (zoom) و نمایش روند پارامترها در بازه‌های دلخواه (۱ دقیقه تا ۱ سال) را فراهم کند.
+FR-1.4: The system must provide time zoom capability and display of parameter trends over arbitrary intervals (1 minute to 1 year).
 
-FR-1.5: اپراتور باید بتواند برای هر پارامتر آستانه‌های هشدار (حد بالا/پایین، حد بحرانی) را تنظیم کند.
+FR-1.5: The operator must be able to set alert thresholds (upper/lower limit, critical limit) for each parameter.
 
-3.1.2 ماژول پیش‌بینی نشت
-FR-2.1: سیستم باید از مدل‌های یادگیری ماشین (مانند LSTM، Isolation Forest، Autoencoder) برای تشخیص ناهنجاری در داده‌های بلادرنگ استفاده کند.
+3.1.2 Leak Prediction Module
+FR-2.1: The system must use machine learning models (such as LSTM, Isolation Forest, Autoencoder) to detect anomalies in real-time data.
 
-FR-2.2: مدل‌های پیش‌بینی نشت باید بر اساس داده‌های تاریخی (از جمله داده‌های سنتتیک تولید شده طبق بخش ۵.۱) آموزش ببینند و به‌صورت دوره‌ای (مثلاً ماهانه) بازآموزی شوند.
+FR-2.2: Leak prediction models must be trained on historical data (including synthetic data generated per Section 5.1) and retrained periodically (e.g., monthly).
 
-FR-2.3: پیش‌بینی نشت باید با افق زمانی حداقل ۳۰ دقیقه قبل از وقوع احتمالی انجام شود و هشدار با احتمال وقوع (مثلاً ۸۵٪) و محدوده اطمینان ارائه دهد.
+FR-2.3: Leak prediction must be made with a horizon of at least 30 minutes before the possible occurrence, and the alert must provide the probability of occurrence (e.g., 85%) and a confidence interval.
 
-FR-2.4: سیستم باید قابلیت توضیح‌پذیری (Explainability) داشته باشد: نمایش مهم‌ترین پارامترهایی که منجر به پیش‌بینی نشت شده‌اند (با استفاده از SHAP یا LIME).
+FR-2.4: The system must have Explainability: showing the most important parameters that led to the leak prediction (using SHAP or LIME).
 
-FR-2.5: در صورت تشخیص نشت واقعی (بر اساس سنسورهای گاز یا افت فشار)، سیستم باید بلافاصله فرمان قطع خودکار شیرهای مربوطه (در صورت اتصال به سیستم ایمنی) را صادر کند (با قابلیت override توسط اپراتور مجاز).
+FR-2.5: If a real leak is detected (based on gas sensors or pressure drop), the system must immediately issue an automatic shutoff command for the relevant valves (if connected to the safety system) (with override capability by an authorized operator).
 
-FR-2.6: دقت مدل پیش‌بینی نشت باید حداقل ۹۵٪ (Recall ≥ 0.95) و نرخ هشدار کاذب کمتر از ۵٪ باشد. برای دستیابی به این دقت، از داده‌های سنتتیک تولید شده در بخش ۵.۱ استفاده شود.
+FR-2.6: The accuracy of the leak prediction model must be at least 95% (Recall ≥ 0.95) with a false alarm rate of less than 5%. To achieve this accuracy, the synthetic data generated in Section 5.1 should be used.
 
-3.1.3 ماژول بهینه‌سازی عملیات بارگیری/تخلیه
-FR-3.1: سیستم باید بر اساس ظرفیت مخازن، نرخ جریان پمپ‌ها، محدودیت‌های ایمنی (حداکثر سطح مجاز، فشار)، و برنامه‌های حمل‌ونقل، برنامه بهینه بارگیری/تخلیه را ارائه دهد.
+3.1.3 Loading/Unloading Operations Optimization Module
+FR-3.1: The system must provide an optimal loading/unloading plan based on tank capacities, pump flow rates, safety constraints (maximum allowable level, pressure), and transport schedules.
 
-FR-3.2: الگوریتم بهینه‌سازی باید با استفاده از روش‌های تحقیق در عملیات (مانند برنامه‌ریزی خطی عدد صحیح مختلط - MILP) یا الگوریتم‌های فراابتکاری (Genetic Algorithm, Particle Swarm) کمینه‌سازی زمان کل عملیات و حداکثرسازی استفاده از ظرفیت را انجام دهد.
+FR-3.2: The optimization algorithm must minimize the total operation time and maximize capacity utilization using operations research methods (such as mixed-integer linear programming - MILP) or metaheuristic algorithms (Genetic Algorithm, Particle Swarm).
 
-FR-3.3: سیستم باید قابلیت شبیه‌سازی سناریوهای مختلف (What-If) را برای ارزیابی تأثیر تغییرات (مثلاً خرابی یک پمپ) فراهم کند.
+FR-3.3: The system must provide the ability to simulate different scenarios (What-If) to evaluate the impact of changes (e.g., a pump failure).
 
-FR-3.4: برنامه بهینه‌شده باید با سیستم‌های ERP/MES از طریق API یکپارچه شود تا سفارش‌های بارگیری به‌صورت خودکار دریافت و وضعیت به‌روزرسانی شود.
+FR-3.4: The optimized plan must be integrated with ERP/MES systems through an API so that loading orders are received automatically and status is updated.
 
-FR-3.5: در طول عملیات، سیستم باید به‌صورت بلادرنگ نرخ جریان، سطح مخزن و فشار را پایش کرده و در صورت انحراف از برنامه، هشدار اصلاحی صادر کند.
+FR-3.5: During operations, the system must monitor flow rate, tank level and pressure in real time and issue a corrective alert if there is a deviation from the plan.
 
-3.1.4 ماژول مدیریت هشدار و رویداد
-FR-4.1: تمام هشدارها باید در یک صف اولویت‌بندی‌شده (بر اساس شدت: بحرانی، زیاد، متوسط، کم) ذخیره شوند.
+3.1.4 Alert and Event Management Module
+FR-4.1: All alerts must be stored in a prioritized queue (by severity: critical, high, medium, low).
 
-FR-4.2: ارسال اعلان به اپراتورهای مربوطه از طریق کانال‌های متعدد (موبایل، ایمیل، پیامک، بلندگوهای صنعتی) با قابلیت تأیید دریافت.
+FR-4.2: Sending notifications to the relevant operators through multiple channels (mobile, email, SMS, industrial loudspeakers) with receipt acknowledgment capability.
 
-FR-4.3: هشدارهای بحرانی باید نیاز به تأیید دو مرحله‌ای (Two-person rule) داشته باشند.
+FR-4.3: Critical alerts must require two-step confirmation (Two-person rule).
 
-FR-4.4: سیستم باید گزارش کامل هر رویداد شامل زمان، پارامترهای مرتبط، اقدامات انجام‌شده و امضای دیجیتال اپراتور را ثبت کند.
+FR-4.4: The system must record a complete report of each event including time, related parameters, actions taken and the operator's digital signature.
 
-FR-4.5: قابلیت سرکوب (Suppression) هوشمند هشدارهای تکراری ناشی از یک علت واحد.
+FR-4.5: Intelligent suppression (Suppression) of repeated alerts caused by a single cause.
 
-3.1.5 ماژول گزارش‌دهی و تحلیل
-FR-5.1: تولید خودکار گزارش‌های روزانه، هفتگی و ماهانه شامل KPIهای ایمنی (تعداد هشدارها، زمان پاسخ، پیش‌بینی‌های صحیح/نادرست).
+3.1.5 Reporting and Analytics Module
+FR-5.1: Automatic generation of daily, weekly and monthly reports including safety KPIs (number of alerts, response time, correct/incorrect predictions).
 
-FR-5.2: داشبورد مدیریتی با نمودارهای تعاملی برای تحلیل روند پارامترها، مقایسه عملکرد مخازن، و شناسایی گلوگاه‌ها.
+FR-5.2: Management dashboard with interactive charts for analyzing parameter trends, comparing tank performance, and identifying bottlenecks.
 
-FR-5.3: قابلیت جستجوی پیشرفته در داده‌های تاریخی بر اساس بازه زمانی، مخزن، نوع رویداد و ...
+FR-5.3: Advanced search capability in historical data by time interval, tank, event type, etc.
 
-FR-5.4: گزارش‌های انطباق با استانداردهای API RP 2350 و IEC 61511 شامل مستندات اثبات ایمنی.
+FR-5.4: Compliance reports with API RP 2350 and IEC 61511 standards including safety proof documentation.
 
-3.1.6 ماژول یکپارچه‌سازی با سیستم‌های موجود
-FR-6.1: اتصال به DCS/SCADA از طریق پروتکل OPC-UA برای دریافت داده‌های فرآیندی و ارسال فرمان‌های کنترلی (با محدودیت امنیتی).
+3.1.6 Integration Module with Existing Systems
+FR-6.1: Connection to DCS/SCADA through the OPC-UA protocol to receive process data and send control commands (with security restrictions).
 
-FR-6.2: اتصال به CMMS (سیستم مدیریت نگهداری) برای ارسال خودکار دستور کارهای پیشگیرانه بر اساس وضعیت سلامت تجهیزات.
+FR-6.2: Connection to CMMS (maintenance management system) for automatic sending of preventive work orders based on equipment health status.
 
-FR-6.3: اتصال به سیستم‌های ERP از طریق REST API برای تبادل اطلاعات سفارش‌ها و موجودی.
+FR-6.3: Connection to ERP systems through REST API to exchange order and inventory information.
 
-FR-6.4: پشتیبانی از استاندارد ISA-95 برای تبادل داده بین لایه‌های سازمانی و کنترلی.
+FR-6.4: Support for the ISA-95 standard for data exchange between enterprise and control layers.
 
-3.2 نیازمندی‌های غیرعملکردی
-3.2.1 عملکرد
-NFR-1.1: تأخیر پردازش داده از حسگر تا نمایش روی داشبورد نباید از ۱ ثانیه تجاوز کند.
+3.2 Non-Functional Requirements
+3.2.1 Performance
+NFR-1.1: Data processing latency from the sensor to display on the dashboard must not exceed 1 second.
 
-NFR-1.2: سیستم باید توانایی پردازش همزمان داده‌های حداقل ۱۰۰۰ حسگر با نرخ ۱ هرتز را داشته باشد.
+NFR-1.2: The system must be able to process data from at least 1000 sensors simultaneously at a rate of 1 Hz.
 
-NFR-1.3: زمان پاسخ‌گویی به درخواست‌های کاربر (مانند کوئری‌های داشبورد) باید کمتر از ۲ ثانیه باشد.
+NFR-1.3: Response time to user requests (such as dashboard queries) must be less than 2 seconds.
 
-NFR-1.4: الگوریتم بهینه‌سازی باید برای یک پایانه با ۵۰ مخزن، برنامه بهینه را در کمتر از ۵ دقیقه محاسبه کند.
+NFR-1.4: The optimization algorithm must compute the optimal plan for a terminal with 50 tanks in less than 5 minutes.
 
-3.2.2 قابلیت اطمینان
-NFR-2.1: در دسترس بودن سیستم ۹۹.۹٪ به صورت ۲۴/۷ (به جز زمان‌های نگهداری برنامه‌ریزی‌شده).
+3.2.2 Reliability
+NFR-2.1: System availability of 99.9% 24/7 (except for planned maintenance times).
 
-NFR-2.2: میانگین زمان بین خرابی (MTBF) سخت‌افزار IoT حداقل ۵ سال.
+NFR-2.2: Mean time between failures (MTBF) of IoT hardware of at least 5 years.
 
-NFR-2.3: سیستم باید دارای افزونگی (Redundancy) در سطح سرور و گیت‌وی‌ها باشد.
+NFR-2.3: The system must have redundancy at the server and gateway level.
 
-NFR-2.4: بازیابی اطلاعات پس از خرابی (RPO) کمتر از ۵ دقیقه و زمان بازیابی (RTO) کمتر از ۳۰ دقیقه.
+NFR-2.4: Data recovery after failure (RPO) of less than 5 minutes and recovery time (RTO) of less than 30 minutes.
 
-3.2.3 امنیت
-NFR-3.1: پیاده‌سازی کنترل دسترسی مبتنی بر نقش (RBAC) و احراز هویت چندعاملی (MFA) برای کاربران.
+3.2.3 Security
+NFR-3.1: Implementation of role-based access control (RBAC) and multi-factor authentication (MFA) for users.
 
-NFR-3.2: رمزنگاری داده‌های حساس در حالت استراحت (AES-256) و در حال انتقال (TLS 1.3).
+NFR-3.2: Encryption of sensitive data at rest (AES-256) and in transit (TLS 1.3).
 
-NFR-3.3: انطباق با استاندارد IEC 62443 برای امنیت سایبری سیستم‌های صنعتی، شامل تقسیم‌بندی شبکه، سیستم تشخیص نفوذ (IDS) و مدیریت patch.
+NFR-3.3: Compliance with the IEC 62443 standard for industrial system cybersecurity, including network segmentation, intrusion detection system (IDS) and patch management.
 
-NFR-3.4: ثبت کامل audit log از تمام فعالیت‌های کاربران و تغییرات پیکربندی.
+NFR-3.4: Complete audit log of all user activities and configuration changes.
 
-3.2.4 قابلیت نگهداری
-NFR-4.1: معماری میکروسرویس‌محور برای امکان به‌روزرسانی مستقل ماژول‌ها.
+3.2.4 Maintainability
+NFR-4.1: Microservice-oriented architecture to allow independent updates of modules.
 
-NFR-4.2: ارائه ابزارهای مانیتورینگ سلامت سیستم (Health Check) و عیب‌یابی خودکار.
+NFR-4.2: Providing system health monitoring tools (Health Check) and automatic troubleshooting.
 
-NFR-4.3: مستندات کامل API و راهنمای ادمین.
+NFR-4.3: Complete API documentation and admin guide.
 
-3.2.5 قابلیت حمل
-NFR-5.1: پشتیبانی از استقرار بر روی محیط‌های ابری (AWS، Azure، GCP) و on-premise (سرورهای مجازی VMware، Hyper-V).
+3.2.5 Portability
+NFR-5.1: Support for deployment on cloud environments (AWS, Azure, GCP) and on-premise (VMware, Hyper-V virtual servers).
 
-NFR-5.2: سازگاری با مرورگرهای اصلی (Chrome، Firefox، Edge) و دستگاه‌های تلفن همراه (iOS، Android).
+NFR-5.2: Compatibility with major browsers (Chrome, Firefox, Edge) and mobile devices (iOS, Android).
 
-3.2.6 مقیاس‌پذیری
-NFR-6.1: سیستم باید به‌صورت افقی مقیاس‌پذیر باشد تا بتواند بدون افت عملکرد، ۱۰ برابر تعداد حسگرها و مخازن اولیه را پشتیبانی کند.
+3.2.6 Scalability
+NFR-6.1: The system must scale horizontally so that it can support 10 times the initial number of sensors and tanks without performance degradation.
 
-NFR-6.2: پایگاه داده زمان‌سری باید قابلیت توزیع‌شدگی (مانند Apache Cassandra) برای ذخیره‌سازی چندین سال داده را داشته باشد.
+NFR-6.2: The time-series database must have distribution capability (such as Apache Cassandra) for storing several years of data.
 
-3.2.7 انطباق با استانداردها
-NFR-7.1: تمام تجهیزات سخت‌افزاری نصب‌شده در مناطق خطرناک باید دارای گواهی ATEX/IECEx Zone 1/2 باشند.
+3.2.7 Standards Compliance
+NFR-7.1: All hardware installed in hazardous areas must have ATEX/IECEx Zone 1/2 certification.
 
-NFR-7.2: سیستم باید الزامات API RP 2350 برای جلوگیری از سرریز مخازن (Overfill Protection) را رعایت کند.
+NFR-7.2: The system must comply with API RP 2350 requirements for tank overfill protection (Overfill Protection).
 
-NFR-7.3: سیستم باید الزامات IEC 61511 برای سیستم‌های ابزار دقیق ایمنی (SIS) را در بخش‌های مرتبط با توقف اضطراری برآورده سازد.
+NFR-7.3: The system must meet the IEC 61511 requirements for safety instrumented systems (SIS) in the parts related to emergency shutdown.
 
-4. نیازمندی‌های رابط خارجی
-4.1 رابط کاربری
-UI-1: داشبورد اصلی باید شامل نقشه پایانه با نمایش موقعیت مخازن و وضعیت رنگی آن‌ها باشد.
+4. External Interface Requirements
+4.1 User Interface
+UI-1: The main dashboard must include a terminal map showing the position of tanks and their color status.
 
-UI-2: صفحات باید واکنش‌گرا (Responsive) بوده و در نمایشگرهای با وضوح Full HD قابل استفاده باشند.
+UI-2: Pages must be responsive and usable on Full HD displays.
 
-UI-3: پشتیبانی از زبان‌های فارسی و انگلیسی.
+UI-3: Support for Persian and English languages.
 
-UI-4: رابط کاربری باید دارای حالت تاریک (Dark Mode) برای محیط‌های کم‌نور اتاق کنترل باشد.
+UI-4: The user interface must have a dark mode for low-light control room environments.
 
-4.2 رابط سخت‌افزاری
-HW-1: گیت‌وی‌های IoT باید از پروتکل‌های بی‌سیم LoRaWAN، WirelessHART و Wi-Fi صنعتی پشتیبانی کنند.
+4.2 Hardware Interface
+HW-1: IoT gateways must support LoRaWAN, WirelessHART and industrial Wi-Fi wireless protocols.
 
-HW-2: حسگرها باید دارای خروجی دیجیتال با پروتکل Modbus RTU/TCP یا HART باشند.
+HW-2: Sensors must have digital output with the Modbus RTU/TCP or HART protocol.
 
-HW-3: سیستم باید از PLCهای ایمنی (Safety PLC) برای اجرای توابع توقف اضطراری (ESD) پشتیبانی کند.
+HW-3: The system must support safety PLCs (Safety PLC) for executing emergency shutdown (ESD) functions.
 
-4.3 رابط نرم‌افزاری
-SW-1: ارائه RESTful API کامل برای تمام عملکردها با مستندات OpenAPI 3.0.
+4.3 Software Interface
+SW-1: Providing a complete RESTful API for all functions with OpenAPI 3.0 documentation.
 
-SW-2: پشتیبانی از OPC-UA Server برای ارائه داده‌ها به سیستم‌های خارجی.
+SW-2: Support for an OPC-UA Server to provide data to external systems.
 
-SW-3: اتصال به دیتابیس‌های SQL و NoSQL خارجی برای تبادل داده.
+SW-3: Connection to external SQL and NoSQL databases for data exchange.
 
-4.4 رابط ارتباطی
-COM-1: استفاده از MQTT با Quality of Service (QoS) سطح ۲ برای انتقال داده‌های حسگرها.
+4.4 Communication Interface
+COM-1: Use of MQTT with Quality of Service (QoS) level 2 for transmitting sensor data.
 
-COM-2: پشتیبانی از پروتکل OPC-UA Pub/Sub برای ارتباط بلادرنگ بین ماژول‌ها.
+COM-2: Support for the OPC-UA Pub/Sub protocol for real-time communication between modules.
 
-COM-3: اتصال امن VPN/IPsec برای دسترسی از راه دور.
+COM-3: Secure VPN/IPsec connection for remote access.
 
-5. ضمائم
-5.1 کد تولید داده سنتتیک
-برای آموزش مدل‌های یادگیری ماشین و تست سیستم، نیاز به حجم زیادی داده سنتتیک واقع‌گرایانه است. کد زیر به زبان پایتون تولید داده‌های حسگرهای مخازن را با در نظر گرفتن الگوهای نرمال و شرایط نشت شبیه‌سازی می‌کند. این کد را می‌توان برای تولید میلیون‌ها رکورد استفاده کرد.
+5. Appendices
+5.1 Synthetic Data Generation Code
+To train machine learning models and test the system, a large amount of realistic synthetic data is needed. The following Python code simulates the generation of tank sensor data taking into account normal patterns and leak conditions. This code can be used to generate millions of records.
 
 python
 import numpy as np
@@ -336,16 +336,16 @@ from datetime import datetime, timedelta
 def generate_synthetic_tank_data(num_tanks=10, num_days=30, sampling_rate_hz=1.0,
                                  leak_probability=0.001, seed=42):
     """
-    تولید داده سنتتیک برای مخازن پتروشیمی شامل پارامترهای فیزیکی و نشانگر نشت.
+    Generate synthetic data for petrochemical tanks including physical parameters and a leak indicator.
     
-    پارامترها:
-        num_tanks: تعداد مخازن
-        num_days: تعداد روزهای شبیه‌سازی
-        sampling_rate_hz: نرخ نمونه‌برداری (هرتز)
-        leak_probability: احتمال وقوع نشت در هر نمونه (برای تزریق رویداد نادر)
-        seed: بذر تصادفی برای تکرارپذیری
-    خروجی:
-        DataFrame با ستون‌های: timestamp, tank_id, level, temperature, pressure, density,
+    Parameters:
+        num_tanks: number of tanks
+        num_days: number of simulation days
+        sampling_rate_hz: sampling rate (Hz)
+        leak_probability: probability of a leak occurring in each sample (for injecting rare events)
+        seed: random seed for reproducibility
+    Output:
+        DataFrame with columns: timestamp, tank_id, level, temperature, pressure, density,
         flammable_gas_ppm, h2s_ppm, vibration_mm_s, corrosion_rate_mm_year, leak_event
     """
     np.random.seed(seed)
@@ -355,17 +355,17 @@ def generate_synthetic_tank_data(num_tanks=10, num_days=30, sampling_rate_hz=1.0
     
     data_list = []
     for tank_id in range(1, num_tanks+1):
-        # پارامترهای پایه مخزن
-        base_level = np.random.uniform(20, 80)  # درصد سطح اولیه
-        base_temp = np.random.uniform(20, 35)   # درجه سانتیگراد
-        base_pressure = np.random.uniform(1.0, 2.5)  # بار
-        base_density = np.random.uniform(0.7, 0.9)   # کیلوگرم بر لیتر
+        # Base tank parameters
+        base_level = np.random.uniform(20, 80)  # initial level percentage
+        base_temp = np.random.uniform(20, 35)   # degrees Celsius
+        base_pressure = np.random.uniform(1.0, 2.5)  # bar
+        base_density = np.random.uniform(0.7, 0.9)   # kilograms per liter
         base_flammable = np.random.uniform(5, 20)    # ppm
         base_h2s = np.random.uniform(0.1, 1.0)       # ppm
         base_vibration = np.random.uniform(0.5, 2.0) # mm/s
         base_corrosion = np.random.uniform(0.01, 0.05) # mm/year
         
-        # تولید سری زمانی با نویز و روند
+        # Generate the time series with noise and trend
         level = base_level + 5*np.sin(np.linspace(0, 4*np.pi, total_samples)) + np.random.normal(0, 0.2, total_samples)
         temperature = base_temp + 3*np.sin(np.linspace(0, 2*np.pi, total_samples)) + np.random.normal(0, 0.5, total_samples)
         pressure = base_pressure + 0.1*np.cos(np.linspace(0, 6*np.pi, total_samples)) + np.random.normal(0, 0.02, total_samples)
@@ -375,7 +375,7 @@ def generate_synthetic_tank_data(num_tanks=10, num_days=30, sampling_rate_hz=1.0
         vibration = base_vibration + 0.2*np.random.normal(0, 0.5, total_samples)
         corrosion = base_corrosion + 0.005*np.random.normal(0, 0.01, total_samples)
         
-        # کلیپ مقادیر به محدوده واقعی
+        # Clip values to the realistic range
         level = np.clip(level, 0, 100)
         temperature = np.clip(temperature, -10, 60)
         pressure = np.clip(pressure, 0.5, 5.0)
@@ -385,24 +385,24 @@ def generate_synthetic_tank_data(num_tanks=10, num_days=30, sampling_rate_hz=1.0
         vibration = np.clip(vibration, 0, 10)
         corrosion = np.clip(corrosion, 0, 0.5)
         
-        # تزریق رویدادهای نشت
+        # Inject leak events
         leak_event = np.zeros(total_samples, dtype=int)
-        # الگوی نشت: افزایش ناگهانی گاز قابل اشتعال، افت فشار، افزایش لرزش
+        # Leak pattern: sudden increase in flammable gas, pressure drop, increased vibration
         for i in range(total_samples):
             if np.random.rand() < leak_probability:
-                # شروع نشت
-                leak_duration = np.random.randint(60, 300)  # 1 تا 5 دقیقه
+                # Leak start
+                leak_duration = np.random.randint(60, 300)  # 1 to 5 minutes
                 end_idx = min(i + leak_duration, total_samples)
                 leak_event[i:end_idx] = 1
-                # تغییرات پارامترها در طول نشت
+                # Parameter changes during the leak
                 flammable_gas[i:end_idx] += np.linspace(0, 50, end_idx-i) + np.random.normal(0, 2, end_idx-i)
                 h2s[i:end_idx] += np.linspace(0, 5, end_idx-i) + np.random.normal(0, 0.5, end_idx-i)
                 pressure[i:end_idx] -= np.linspace(0, 0.3, end_idx-i) + np.random.normal(0, 0.01, end_idx-i)
                 vibration[i:end_idx] += np.linspace(0, 3, end_idx-i) + np.random.normal(0, 0.3, end_idx-i)
-                level[i:end_idx] -= np.linspace(0, 0.5, end_idx-i)  # افت سطح جزئی
-                i = end_idx  # جلوگیری از همپوشانی
+                level[i:end_idx] -= np.linspace(0, 0.5, end_idx-i)  # slight level drop
+                i = end_idx  # prevent overlap
                 
-        # ساخت DataFrame برای این مخزن
+        # Build the DataFrame for this tank
         tank_df = pd.DataFrame({
             'timestamp': timestamps,
             'tank_id': tank_id,
@@ -422,28 +422,28 @@ def generate_synthetic_tank_data(num_tanks=10, num_days=30, sampling_rate_hz=1.0
     full_data.sort_values('timestamp', inplace=True)
     return full_data
 
-# مثال استفاده
+# Usage example
 if __name__ == "__main__":
-    # تولید داده برای 10 مخزن به مدت 7 روز با نرخ 1 هرتز
+    # Generate data for 10 tanks for 7 days at 1 Hz
     df = generate_synthetic_tank_data(num_tanks=10, num_days=7, sampling_rate_hz=1.0, 
                                       leak_probability=0.0005, seed=123)
-    print(f"تعداد رکوردهای تولید شده: {len(df)}")
+    print(f"Number of generated records: {len(df)}")
     print(df.head())
-    # ذخیره به فایل CSV برای آموزش مدل
+    # Save to a CSV file for model training
     df.to_csv('synthetic_tank_data.csv', index=False)
-توضیح: این کد داده‌هایی با توزیع واقع‌گرایانه تولید می‌کند که شامل رویدادهای نشت نادر است. با تنظیم leak_probability می‌توان نسبت کلاس‌ها را کنترل کرد. برای تولید حجم بالا (مثلاً ۱ میلیون رکورد)، می‌توان تعداد روزها یا مخازن را افزایش داد. داده‌های سنتتیک باید با داده‌های واقعی (در صورت وجود) ترکیب شوند تا مدل‌های ML دقت بالایی داشته باشند.
+Note: This code generates data with realistic distributions that include rare leak events. By adjusting leak_probability, the class ratio can be controlled. To generate large volumes (e.g., 1 million records), the number of days or tanks can be increased. Synthetic data should be combined with real data (if available) so ML models achieve high accuracy.
 
-5.2 بنچمارک‌های بین‌المللی
-برای اطمینان از کامل بودن نیازمندی‌ها، سیستم با نمونه‌های بین‌المللی مشابه مقایسه شده است. موارد زیر اضافه شده‌اند:
+5.2 International Benchmarks
+To ensure the completeness of the requirements, the system was compared with similar international examples. The following were added:
 
-مدیریت دوقلوی دیجیتال (Digital Twin): بر اساس استاندارد ISO 23247 (Digital Twin framework for manufacturing)، سیستم باید یک مدل دیجیتال زنده از مخازن و خطوط لوله ایجاد کند که امکان شبیه‌سازی و پیش‌بینی رفتار را فراهم می‌کند. (اضافه شد به FR-2.7: سیستم باید یک دوقلوی دیجیتال برای هر مخزن ایجاد کند که با داده‌های بلادرنگ به‌روزرسانی می‌شود و قابلیت اجرای سناریوهای What-If را دارد.)
+Digital Twin management: Based on the ISO 23247 standard (Digital Twin framework for manufacturing), the system must create a live digital model of tanks and pipelines that enables simulation and behavior prediction. (Added to FR-2.7: The system must create a digital twin for each tank that is updated with real-time data and has the ability to run What-If scenarios.)
 
-یکپارچگی با سیستم مدیریت انرژی (ISO 50001): بهینه‌سازی عملیات بارگیری/تخلیه باید مصرف انرژی را نیز در نظر بگیرد. (اضافه شد به FR-3.6: الگوریتم بهینه‌سازی باید تابع هزینه شامل مصرف انرژی پمپ‌ها را کمینه کند.)
+Integration with the energy management system (ISO 50001): The optimization of loading/unloading operations must also consider energy consumption. (Added to FR-3.6: The optimization algorithm must minimize a cost function that includes pump energy consumption.)
 
-تحلیل قابلیت اطمینان (RCM): بر اساس ISO 14224، سیستم باید داده‌های خرابی تجهیزات را برای برنامه‌ریزی نگهداری قابلیت اطمینان‌محور جمع‌آوری و تحلیل کند. (اضافه شد به FR-1.6: سیستم باید داده‌های سلامت تجهیزات (لرزش، دما، ساعات کارکرد) را برای محاسبه شاخص‌های RCM ذخیره کند.)
+Reliability analysis (RCM): Based on ISO 14224, the system must collect and analyze equipment failure data for reliability-centered maintenance planning. (Added to FR-1.6: The system must store equipment health data (vibration, temperature, operating hours) to calculate RCM indicators.)
 
-امنیت سایبری پیشرفته (IEC 62443-4-2): نیازمندی‌های امنیتی در سطح اجزاء مانند امن‌سازی بوت، رمزنگاری کلید، و کنترل جریان داده بین زون‌ها اضافه شد. (به NFR-3.5: اجزای سخت‌افزاری باید دارای تراشه امن (TPM) برای ذخیره کلیدها و امضای دیجیتال باشند.)
+Advanced cybersecurity (IEC 62443-4-2): Component-level security requirements such as secure boot, key encryption, and data flow control between zones were added. (To NFR-3.5: Hardware components must have a secure chip (TPM) for storing keys and digital signatures.)
 
-مدیریت هشدار بر اساس ISA-18.2 (Alarm Management): برای کاهش خستگی اپراتور، سیستم باید نرخ هشدار را به حداکثر ۶ هشدار در ساعت برای هر اپراتور محدود کند. (اضافه شد به FR-4.6: سیستم باید الگوریتم‌های Rationalization هشدار را بر اساس ISA-18.2 پیاده‌سازی کند.)
+Alarm management based on ISA-18.2 (Alarm Management): To reduce operator fatigue, the system must limit the alarm rate to a maximum of 6 alarms per hour per operator. (Added to FR-4.6: The system must implement alarm Rationalization algorithms based on ISA-18.2.)
 
-پشتیبانی از ارتباطات 5G: برای پایانه‌های بزرگ با پهنای باند بالا، پشتیبانی از شبکه 5G خصوصی برای انتقال داده‌های حسگرها. (اضافه شد به COM-4: گیت‌وی‌ها باید قابلیت اتصال به شبکه 5G خصوصی را داشته باشند.)
+5G communication support: For large terminals with high bandwidth, support for a private 5G network to transmit sensor data. (Added to COM-4: Gateways must be able to connect to a private 5G network.)
